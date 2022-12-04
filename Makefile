@@ -6,7 +6,7 @@
 #    By: lbourniq <lbourniq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 15:09:18 by lbourniq          #+#    #+#              #
-#    Updated: 2022/12/03 16:56:23 by lbourniq         ###   ########.fr        #
+#    Updated: 2022/12/04 13:49:24 by lbourniq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,11 @@ RM_FLAGS = -rf
 
 # SRCS Files and objs
 SRCS = pipex.c\
-		get_file_length.c
+		ft_get.c\
+		ft_free.c\
+		ft_create.c\
+		ft_close.c\
+		ft_execute.c
 
 OBJS = $(SRCS:.c=.o)
 
