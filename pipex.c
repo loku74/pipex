@@ -19,7 +19,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)envp;
 	if (argc >= 5)
 	{
-		ft_check_input_error(&pipex, argc, argv, envp);
+		ft_printf("%d\n", ft_check_files_error(&pipex, argc, argv));
 	}
 	return (0);
 }

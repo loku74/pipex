@@ -27,6 +27,6 @@ typedef struct s_pipex
 	char	**paths;
 }	t_pipex;
 
-void	ft_check_input_error(t_pipex *pipex, int argc, char **argv, char **envp);
+int	ft_check_files_error(t_pipex *pipex, int argc, char **argv);
 
 #endif
