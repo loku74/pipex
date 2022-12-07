@@ -6,7 +6,7 @@
 #    By: lbourniq <lbourniq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 15:09:18 by lbourniq          #+#    #+#              #
-#    Updated: 2022/12/06 15:28:56 by lbourniq         ###   ########.fr        #
+#    Updated: 2022/12/07 16:22:34 by lbourniq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,11 @@ RM_FLAGS = -rf
 # SRCS Files and objs
 SRCS = pipex.c\
 	ft_check.c\
+	ft_create.c\
+	ft_exit.c\
+	ft_free.c\
+	ft_execute.c\
+	ft_close.c
 		
 OBJS = $(SRCS:.c=.o)
 
@@ -54,5 +59,7 @@ fclean :
 	@make -C ./libft/. fclean
 	@$(RM) $(RM_FLAGS) $(NAME) $(OBJS)
 	@echo "${PURPLE}-> pipex executable and push_swap objs files removed successfully${NC}"
+
+re: fclean all
 	
 .PHONY: all re fclean clean makelibft
