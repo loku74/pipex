@@ -6,7 +6,7 @@
 #    By: lbourniq <lbourniq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 15:09:18 by lbourniq          #+#    #+#              #
-#    Updated: 2022/12/07 16:22:34 by lbourniq         ###   ########.fr        #
+#    Updated: 2022/12/08 11:18:22 by lbourniq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRCS = pipex.c\
 	ft_exit.c\
 	ft_free.c\
 	ft_execute.c\
-	ft_close.c
+	ft_close.c\
+	ft_utils.c
 		
 OBJS = $(SRCS:.c=.o)
 
@@ -62,4 +63,4 @@ fclean :
 
 re: fclean all
 	
-.PHONY: all re fclean clean makelibft
+.PHONY: all re fclean clean makeli

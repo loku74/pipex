@@ -6,11 +6,31 @@
 /*   By: lbourniq <lbourniq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:21:50 by lbourniq          #+#    #+#             */
-/*   Updated: 2022/12/07 18:21:24 by lbourniq         ###   ########.fr       */
+/*   Updated: 2022/12/08 11:16:01 by lbourniq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+static int	is_in(char *str, char *charset)
+{
+	int	i;
+	int	k;
+
+	i = 0;
+	while (str[i])
+	{
+		k = 0;
+		while (charset[k])
+		{
+			if (str[i] == charset[k])
+				return (1);
+			k++;
+		}
+		i++;
+	}
+	return (0);
+}
 
 static void	ft_execute_infile(t_pipex *pipex, char **argv, int i, int argc)
 {
@@ -26,19 +46,19 @@ static void	ft_execute_infile(t_pipex *pipex, char **argv, int i, int argc)
 	k = 0;
 	while (pipex->paths[k])
 	{
-		cmd_args = ft_split(argv[i + 2], ' ');
+		if (is_in(argv[i + 2], "\"\'{}") == 1)
+			cmd_args = ft_pipex_split(argv[i + 2]);
+		else
+			cmd_args = ft_split(argv[i + 2], ' ');
 		cmd = ft_strjoin(pipex->paths[k], cmd_args[0]);
 		execve(cmd, cmd_args, NULL);
 		free(cmd);
 		ft_free_cmds(cmd_args);
 		k++;
 	}
-	close(STDIN_FILENO);
-	close(STDOUT_FILENO);
 	ft_putstr_fd("Command not found: ", STDERR_FILENO);
-	ft_putstr_fd(argv[i + 2], STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
-	exit(errno);
+	ft_putendl_fd(argv[i + 2], STDERR_FILENO);
+	exit(0);
 }
 
 static void	ft_execute_outfile(t_pipex *pipex, char **argv, int i, int argc)
@@ -55,19 +75,19 @@ static void	ft_execute_outfile(t_pipex *pipex, char **argv, int i, int argc)
 	k = 0;
 	while (pipex->paths[k])
 	{
-		cmd_args = ft_split(argv[i + 2], ' ');
+		if (is_in(argv[i + 2], "\"\'{}") == 1)
+			cmd_args = ft_pipex_split(argv[i + 2]);
+		else
+			cmd_args = ft_split(argv[i + 2], ' ');
 		cmd = ft_strjoin(pipex->paths[k], cmd_args[0]);
 		execve(cmd, cmd_args, NULL);
 		free(cmd);
 		ft_free_cmds(cmd_args);
 		k++;
 	}
-	close(STDIN_FILENO);
-	close(STDOUT_FILENO);
 	ft_putstr_fd("Command not found: ", STDERR_FILENO);
-	ft_putstr_fd(argv[i + 2], STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
-	exit(errno);
+	ft_putendl_fd(argv[i + 2], STDERR_FILENO);
+	exit(0);
 }
 
 static void	ft_execute_pipe(t_pipex *pipex, char **argv, int i, int argc)
@@ -84,19 +104,19 @@ static void	ft_execute_pipe(t_pipex *pipex, char **argv, int i, int argc)
 	k = 0;
 	while (pipex->paths[k])
 	{
-		cmd_args = ft_split(argv[i + 2], ' ');
+		if (is_in(argv[i + 2], "\"\'{}") == 1)
+			cmd_args = ft_pipex_split(argv[i + 2]);
+		else
+			cmd_args = ft_split(argv[i + 2], ' ');
 		cmd = ft_strjoin(pipex->paths[k], cmd_args[0]);
 		execve(cmd, cmd_args, NULL);
 		free(cmd);
 		ft_free_cmds(cmd_args);
 		k++;
 	}
-	close(STDIN_FILENO);
-	close(STDOUT_FILENO);
 	ft_putstr_fd("Command not found: ", STDERR_FILENO);
-	ft_putstr_fd(argv[i + 2], STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
-	exit(errno);
+	ft_putendl_fd(argv[i + 2], STDERR_FILENO);
+	exit(0);
 }
 
 void	ft_execute_command(t_pipex *pipex, char **argv, int i, int argc)

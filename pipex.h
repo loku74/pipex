@@ -6,7 +6,7 @@
 /*   By: lbourniq <lbourniq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:22:14 by lbourniq          #+#    #+#             */
-/*   Updated: 2022/12/07 17:46:32 by lbourniq         ###   ########.fr       */
+/*   Updated: 2022/12/08 11:18:39 by lbourniq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,8 @@ void	ft_exit_3(t_pipex *pipex, int argc, int err);
 void	ft_free_paths(char **paths);
 void	ft_free_cmds(char **cmds);
 void	ft_free_pipes(int **pipes, int argc);
+
+// ft_utils.c
+char	**ft_pipex_split(char *str);
 
 #endif

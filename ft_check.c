@@ -6,7 +6,7 @@
 /*   By: lbourniq <lbourniq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:21:38 by lbourniq          #+#    #+#             */
-/*   Updated: 2022/12/07 17:50:55 by lbourniq         ###   ########.fr       */
+/*   Updated: 2022/12/08 11:09:17 by lbourniq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ static void	ft_display_error(int errnum, char *content)
 {
 	ft_putstr_fd(strerror(errnum), STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putstr_fd(content, STDERR_FILENO);
-	ft_putchar_fd('\n', STDERR_FILENO);
+	ft_putendl_fd(content, STDERR_FILENO);
 	exit(errnum);
 }
 
