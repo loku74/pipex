@@ -6,7 +6,7 @@
 /*   By: lbourniq <lbourniq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:22:14 by lbourniq          #+#    #+#             */
-/*   Updated: 2022/12/08 16:31:03 by lbourniq         ###   ########.fr       */
+/*   Updated: 2022/12/09 10:25:47 by lbourniq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_pipex
 void	ft_close_pipes(int **pipes, int n);
 
 // ft_check.c
-int		ft_check_files_error(t_pipex *pipex, int argc, char **argv);
+void	ft_check_files_error(t_pipex *pipex, int argc, char **argv);
 
 // ft_create.c
 void	ft_create_paths(t_pipex *pipex, char **envp);

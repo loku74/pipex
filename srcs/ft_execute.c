@@ -6,7 +6,7 @@
 /*   By: lbourniq <lbourniq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:21:50 by lbourniq          #+#    #+#             */
-/*   Updated: 2022/12/08 16:33:34 by lbourniq         ###   ########.fr       */
+/*   Updated: 2022/12/09 10:34:27 by lbourniq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ static void	ft_execute_infile(t_pipex *pipex, char **argv, int i, int argc)
 	ft_close_pipes(pipex->pipes, argc - 4);
 	close(pipex->fd_in);
 	close(pipex->fd_out);
-	ft_execute_cmds(pipex, argv, i);
-	ft_putstr_fd("Command not found: ", STDERR_FILENO);
-	ft_putendl_fd(argv[i + 2], STDERR_FILENO);
+	if (pipex->fd_in != -1)
+	{
+		ft_execute_cmds(pipex, argv, i);
+		ft_putstr_fd("Command not found: ", STDERR_FILENO);
+		ft_putendl_fd(argv[i + 2], STDERR_FILENO);
+	}
 	exit(errno);
 }
 
@@ -57,9 +60,12 @@ static void	ft_execute_outfile(t_pipex *pipex, char **argv, int i, int argc)
 	ft_close_pipes(pipex->pipes, argc - 4);
 	close(pipex->fd_in);
 	close(pipex->fd_out);
-	ft_execute_cmds(pipex, argv, i);
-	ft_putstr_fd("Command not found: ", STDERR_FILENO);
-	ft_putendl_fd(argv[i + 2], STDERR_FILENO);
+	if (pipex->fd_out != -1)
+	{
+		ft_execute_cmds(pipex, argv, i);
+		ft_putstr_fd("Command not found: ", STDERR_FILENO);
+		ft_putendl_fd(argv[i + 2], STDERR_FILENO);
+	}
 	exit(errno);
 }
 
